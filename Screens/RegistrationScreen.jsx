@@ -10,11 +10,9 @@ const RegistrationScreen = () => (
 
   <View style={styles.container}>
     <ImageBackground
-      sourse={BackgroundImage}
-      
-      resizeMode="cover"
+      source={BackgroundImage}
       style={styles.image}>
-      <Text style={styles.title}>React Native</Text>
+      <Text style={styles.title}>Реєстрація</Text>
     </ImageBackground>
   </View>
 );
@@ -23,7 +21,7 @@ const RegistrationScreen = () => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    padding: 10,
     // backgroundColor: '#fff'
     ...Platform.select({
       ios: {
@@ -36,23 +34,19 @@ const styles = StyleSheet.create({
      )
   },
   title: {
-    marginTop: 16,
-    paddingVertical: 8,
-    padding:10,
-    borderWidth: 2,
-    borderColor: "#20232a",
-    borderRadius: 6,
-    backgroundColor: "#61dafb",
-    color: "#20232a",
+    marginTop: 16, 
+    color: "#212121",
     textAlign: "center",
     fontSize: 30,
     fontWeight: "bold"
   },
    image: {
     flex: 1,
-    justifyContent: 'center',
-    // width: '100',
-    // height:'100',
+     justifyContent: 'center',
+     resizeMode: "fill",
+    objectFit: 'fill',
+    // width: '100vw',
+    // height:'100vh',
   }
 })
 
