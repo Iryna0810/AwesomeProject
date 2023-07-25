@@ -1,26 +1,70 @@
 import React from 'react';
+
 import { useCallback } from 'react';
-// import { Text, View, StyleSheet, TextInput } from 'react-native';
-import { ImageBackground, Platform, StyleSheet, Text, View } from "react-native";
-// import { ImageBackground } from 'react-native-web';
+import {
+  Alert,
+  Button,
+  TextInput,
+  SafeAreaView,
+  ImageBackground,
+  Platform,
+  StyleSheet,
+  Text,
+  View
+} from "react-native";
 import BackgroundImage from '../images/photo-bg.jpg'
 
-const RegistrationScreen = () => (
-  // const [text, onChangeText] = React.useState('Useless Text');
+const RegistrationScreen = () => {
+  const [login, onChangeText] = React.useState('Логін');
+  const [email, onChangeEmail] = React.useState('Адреса електронної пошти');
+  const [password, onChangePassword] = React.useState('Пароль');
 
-  <View style={styles.container}>
-    <ImageBackground
-      source={BackgroundImage}
-      style={styles.image}>
-      <Text style={styles.title}>Реєстрація</Text>
-    </ImageBackground>
-  </View>
-);
-
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        source={BackgroundImage}
+        style={styles.image}>
+        <SafeAreaView style={styles.inputContainer}>
+          <Text style={styles.title}>Реєстрація</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeText}
+            placeholder="Логін"
+            // value={login}
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeEmail}
+            // value={email}
+            placeholder="Адреса електронної пошти"
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangePassword}
+            // value={password}
+            placeholder="Пароль"
+            keyboardType="text"
+          />
+          <Button style={styles.button}
+            color='#FF6C00'
+            title='Зареєструватися'
+            onPress={() => Alert.alert('Left button pressed')}
+            // width='343'
+            padding='16'
+            marginTop='43'         
+          />
+        </SafeAreaView>
+      </ImageBackground>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
+    // position:relative,
     flex: 1,
+    height: 100,
+    width: 375,
     padding: 10,
     // backgroundColor: '#fff'
     ...Platform.select({
@@ -31,24 +75,51 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
       },
     }
-     )
+    )
   },
   title: {
-    marginTop: 16, 
+    marginTop: 92,
     color: "#212121",
     textAlign: "center",
     fontSize: 30,
     fontWeight: "bold"
   },
-   image: {
+  image: {
     flex: 1,
-     justifyContent: 'center',
-     resizeMode: "fill",
-    objectFit: 'fill',
-    // width: '100vw',
-    // height:'100vh',
-  }
-})
+    justifyContent: 'center',
+    resizeMode: 'contain',
+  },
+    input: {
+    height: 50,
+    padding:16,
+    margin: 16,
+    borderWidth: 1,
+    borderColor: '#E8E8E8',
+    borderRadius: 5,
+      color: "#BDBDBD",
+      backgroundColor: '#E8E8E8',
+    
+    
+  },
+  inputContainer: {
+    flex: 1,
+    padding: 16,
+    marginTop: 263,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+  },
+  button: {
+   
+    color: '#fff',
+    paddingLeft: 111.5,
+    paddingBottom: 16,
+    paddingRight: 111.5,
+    paddingTop: 16,
+    borderRadius: 100,
+  },
+});
+
 
 export default RegistrationScreen;
 
