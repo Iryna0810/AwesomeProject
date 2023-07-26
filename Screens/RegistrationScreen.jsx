@@ -25,11 +25,7 @@ const RegistrationScreen = () => {
   return (
      <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
-
-        
+      style={styles.container}>        
       <ImageBackground
         source={BackgroundImage}
         style={styles.image}>
@@ -45,8 +41,7 @@ const RegistrationScreen = () => {
           <TextInput
             style={styles.input}
             onChangeText={email => setEmail(email)}
-            // value={email}
-                placeholder="Адреса електронної пошти"
+            placeholder="Адреса електронної пошти"
 
           />
           <TextInput
@@ -65,8 +60,6 @@ const RegistrationScreen = () => {
             </View>
         </SafeAreaView>
           </ImageBackground>
-
-         </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 };
@@ -76,17 +69,8 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     width: 375,
-    paddingHorizontal:16,
-    // backgroundColor: '#fff'
-    ...Platform.select({
-      ios: {
-        backgroundColor: '#000000'
-      },
-      android: {
-        backgroundColor: '#fff'
-      },
-    }
-    )
+    paddingHorizontal: 16,
+    backgroundColor: '#fff',
   },
   title: {
     marginTop: 92,
@@ -101,9 +85,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     resizeMode: 'contain',
   },
-    input: {
+  input: {
     height: 50,
-    padding:16,
+    padding: 16,
     marginVertical: 8,
     borderWidth: 1,
     borderColor: '#E8E8E8',
@@ -122,9 +106,10 @@ const styles = StyleSheet.create({
   btn: {
     color: '#000',
     marginTop: 45,
-    borderRadius:30,
+    borderRadius: 30,
   },
-});
+}
+);
 
 
 export default RegistrationScreen;
