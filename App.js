@@ -2,12 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import RegistrationScreen from './Screens/RegistrationScreen';
 import React from 'react';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, View} from 'react-native';
 
 
 export default function App() {
     const [fontsLoaded] = useFonts({
-    'Inter-Black': require('./assets/fonts/Inter-Black.otf'),
+    'Roboto': require('./assets/fonts/Roboto-Black.ttf'),
   });
   return (
     <View style={styles.container}>
@@ -19,6 +19,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    fontFamily: 'Roboto',
+    fontSize: 16,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',

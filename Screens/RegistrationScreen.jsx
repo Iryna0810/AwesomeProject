@@ -1,20 +1,21 @@
 import React from 'react';
-
 import { useCallback } from 'react';
 import {
   Alert,
   KeyboardAvoidingView,
-  TouchableWithoutFeedback,
+  ScrollView,
   Button,
   TextInput,
   SafeAreaView,
   ImageBackground,
-  Platform,
+  RefreshControl,
   StyleSheet,
+  Image,
   Text,
   View,
   Keyboard,
 } from "react-native";
+
 import BackgroundImage from '../images/photo-bg.jpg'
 
 const RegistrationScreen = () => {
@@ -22,34 +23,55 @@ const RegistrationScreen = () => {
   const [email, setEmail] = React.useState('Адреса електронної пошти');
   const [password, setPassword] = React.useState('Пароль');
 
+   const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   return (
      <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}>        
+      style={styles.container}>  
+      <ScrollView keyboardDismissMode="interactive"
+      refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
       <ImageBackground
         source={BackgroundImage}
-        style={styles.image}>
-        <SafeAreaView style={styles.inputContainer}>
+        style={styles.image_bg}>
+          <SafeAreaView style={styles.inputContainer}>
+            <View style={styles.box}>
+              <Image
+                source={require('../assets/add.png')}
+                // styles={{ width: 25, height: 25 }}
+                style={styles.image}
+              />
+            </View>
           <Text style={styles.title}>Реєстрація</Text>
           <TextInput
             style={styles.input}
-            onChangeText={login => setLogin(login)}
-                placeholder="Логін"
-
-            // value={login}
+            onChangeText={setLogin}
+            placeholder="Логін"
+            value={login}
           />
           <TextInput
             style={styles.input}
-            onChangeText={email => setEmail(email)}
+            onChangeText={setEmail}
             placeholder="Адреса електронної пошти"
-
+            value={email}
+              
           />
           <TextInput
             style={styles.input}
-            onChangeText={password => setPassword(password)}
-            // value={password}
+            onChangeText={setPassword}
+            value={password}
             placeholder="Пароль"
-
+              // value='Пароль'
+              
           />
           <View style={styles.btn}>
           <Button
@@ -58,8 +80,10 @@ const RegistrationScreen = () => {
             color='#FF6C00'
             />
             </View>
+            <Text style={styles.text} onPress={()=> console.log('Enter in account')}>Вже є аккаунт? Увійти</Text>
         </SafeAreaView>
-          </ImageBackground>
+        </ImageBackground>
+        </ScrollView>
     </KeyboardAvoidingView>
   );
 };
@@ -80,10 +104,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 32,
   },
+  image_bg:  {
+flex: 1,
+  },
   image: {
-    flex: 1,
-    justifyContent: 'center',
-    resizeMode: 'contain',
+    position:'absolute',
+    right: -12.5,
+    bottom: 14,
+    width: 25,
+    height: 25,
   },
   input: {
     height: 50,
@@ -103,11 +132,28 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 25,
     paddingHorizontal: 16,
   },
+  text: {
+    marginTop: 16,
+    marginBottom: 45,
+    textAlign: 'center',
+    
+  },
   btn: {
     color: '#000',
     marginTop: 45,
     borderRadius: 30,
   },
+  box: {
+    backgroundColor: '#F6F6F6',
+    width: 120,
+    height: 120,
+    position: 'absolute',
+    // alignItems: 'center',
+    alignSelf: 'center',
+    top: -60,
+    borderColor: '#000',
+    borderRadius: 16,
+  }
 }
 );
 
