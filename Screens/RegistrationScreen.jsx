@@ -3,6 +3,8 @@ import React from 'react';
 import { useCallback } from 'react';
 import {
   Alert,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
   Button,
   TextInput,
   SafeAreaView,
@@ -10,17 +12,24 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Keyboard,
 } from "react-native";
 import BackgroundImage from '../images/photo-bg.jpg'
 
 const RegistrationScreen = () => {
-  const [login, onChangeText] = React.useState('Логін');
-  const [email, onChangeEmail] = React.useState('Адреса електронної пошти');
-  const [password, onChangePassword] = React.useState('Пароль');
+  const [login, setLogin] = React.useState('Логін');
+  const [email, setEmail] = React.useState('Адреса електронної пошти');
+  const [password, setPassword] = React.useState('Пароль');
 
   return (
-    <View style={styles.container}>
+     <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+
+
+        
       <ImageBackground
         source={BackgroundImage}
         style={styles.image}>
@@ -28,44 +37,46 @@ const RegistrationScreen = () => {
           <Text style={styles.title}>Реєстрація</Text>
           <TextInput
             style={styles.input}
-            onChangeText={onChangeText}
-            placeholder="Логін"
+            onChangeText={login => setLogin(login)}
+                placeholder="Логін"
+
             // value={login}
           />
           <TextInput
             style={styles.input}
-            onChangeText={onChangeEmail}
+            onChangeText={email => setEmail(email)}
             // value={email}
-            placeholder="Адреса електронної пошти"
+                placeholder="Адреса електронної пошти"
+
           />
           <TextInput
             style={styles.input}
-            onChangeText={onChangePassword}
+            onChangeText={password => setPassword(password)}
             // value={password}
             placeholder="Пароль"
-            keyboardType="text"
+
           />
-          <Button style={styles.button}
-            color='#FF6C00'
+          <View style={styles.btn}>
+          <Button
             title='Зареєструватися'
             onPress={() => Alert.alert('Left button pressed')}
-            // width='343'
-            padding='16'
-            marginTop='43'         
-          />
+            color='#FF6C00'
+            />
+            </View>
         </SafeAreaView>
-      </ImageBackground>
-    </View>
+          </ImageBackground>
+
+         </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    // position:relative,
     flex: 1,
-    height: 100,
+    height: '100%',
     width: 375,
-    padding: 10,
+    paddingHorizontal:16,
     // backgroundColor: '#fff'
     ...Platform.select({
       ios: {
@@ -82,7 +93,8 @@ const styles = StyleSheet.create({
     color: "#212121",
     textAlign: "center",
     fontSize: 30,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    marginBottom: 32,
   },
   image: {
     flex: 1,
@@ -92,31 +104,25 @@ const styles = StyleSheet.create({
     input: {
     height: 50,
     padding:16,
-    margin: 16,
+    marginVertical: 8,
     borderWidth: 1,
     borderColor: '#E8E8E8',
     borderRadius: 5,
-      color: "#BDBDBD",
-      backgroundColor: '#E8E8E8',
-    
-    
+    color: "#BDBDBD",
+    backgroundColor: '#E8E8E8',
   },
   inputContainer: {
     flex: 1,
-    padding: 16,
     marginTop: 263,
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
+    paddingHorizontal: 16,
   },
-  button: {
-   
-    color: '#fff',
-    paddingLeft: 111.5,
-    paddingBottom: 16,
-    paddingRight: 111.5,
-    paddingTop: 16,
-    borderRadius: 100,
+  btn: {
+    color: '#000',
+    marginTop: 45,
+    borderRadius:30,
   },
 });
 
