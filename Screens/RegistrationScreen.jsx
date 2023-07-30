@@ -33,7 +33,13 @@ const RegistrationScreen = ({ onRegistration }) => {
   });
 
   const handleSubmit = useCallback(() => {
-    Alert.alert(`Wellcome ${login}!`)
+    if (login&&email&&password) {
+      Alert.alert(`Wellcome ${login}!`)
+      console.log(`Wellcome ${login}, your email ${email}, your password ${password}`)
+    }
+    else {
+      Alert.alert(`Type all necessary information for registration!`)
+    }
     setLogin('')
     setEmail('')
     setPassword('')
