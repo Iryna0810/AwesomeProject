@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import RegistrationScreen from './Screens/RegistrationScreen';
 import LoginScreen from './Screens/LoginScreen';
+import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from 'react';
 import { StyleSheet, View, Alert} from 'react-native';
 
@@ -13,6 +14,7 @@ export default function App() {
   const [registration, setRegistration] = useState(false);
     
   return (
+<NavigationContainer>
     <View style={styles.container}>
 
       { ! registration ? <RegistrationScreen onRegistration={() => {
@@ -25,7 +27,8 @@ export default function App() {
       }}/>
        }
       <StatusBar style="auto" />
-    </View>
+      </View>
+      </NavigationContainer>
   )
 }
 
