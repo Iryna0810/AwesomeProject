@@ -29,7 +29,14 @@ const LoginScreen = ({ onRegistration }) => {
     });
 
     const handleSubmit = useCallback(() => {
+        if (email && password) {
         Alert.alert(`Wellcome ${email}!`)
+         console.log(`Login ${email}, password ${password}`)   
+        }
+        else {
+               Alert.alert(`Type all necessary information for login!`)   
+        }
+        
         setEmail('')
         setPassword('')
 
