@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCallback, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   Alert,
   TouchableWithoutFeedback,
@@ -18,7 +19,8 @@ import {
 } from "react-native";
 import BackgroundImage from '../images/photo-bg.jpg'
 
-const LoginScreen = ({ onRegistration }) => {
+const LoginScreen = () => {
+    const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [refreshing, setRefreshing] = useState(false);
@@ -94,7 +96,10 @@ const LoginScreen = ({ onRegistration }) => {
                                         color='#FF6C00'
                                     />
                                 </View>
-                                <Text style={styles.text} onPress={handleEnter}>Немає аккаунту? Зареєструватись</Text>
+                                <Text style={styles.text}
+                                    onPress={() => navigation.navigate("Register")}
+                                >Немає аккаунту? Зареєструватись
+                                </Text>
                             </SafeAreaView>
                         </ImageBackground>
                     </ScrollView>

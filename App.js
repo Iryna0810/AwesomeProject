@@ -4,20 +4,25 @@ import RegistrationScreen from './Screens/RegistrationScreen';
 import LoginScreen from './Screens/LoginScreen';
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from 'react';
-import { StyleSheet, View, Alert} from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
+import MapScreen from './Screens/LoginScreen';
 
 
 export default function App() {
-    const [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     'Roboto': require('./assets/fonts/Roboto-Black.ttf'),
-    });
-  const [registration, setRegistration] = useState(false);
+  });
+  // const [registration, setRegistration] = useState(false);
     
   return (
-<NavigationContainer>
-    <View style={styles.container}>
+    <NavigationContainer>
+      < MapScreen />
+      {/* <View style={styles.container}>
+        <StatusBar style="auto" />
+      </View > */}
 
-      { ! registration ? <RegistrationScreen onRegistration={() => {
+
+      {/* { ! registration ? <RegistrationScreen onRegistration={() => {
         setRegistration(true)
        Alert.alert('Press Ok')
       }}/> 
@@ -25,10 +30,9 @@ export default function App() {
         setRegistration(false)
        Alert.alert('Press Ok')
       }}/>
-       }
-      <StatusBar style="auto" />
-      </View>
-      </NavigationContainer>
+        } */}
+
+    </NavigationContainer>
   )
 }
 
