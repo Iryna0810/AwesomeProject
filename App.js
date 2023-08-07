@@ -1,38 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import RegistrationScreen from './Screens/RegistrationScreen';
-import LoginScreen from './Screens/LoginScreen';
-import { NavigationContainer } from "@react-navigation/native";
-import React, { useState } from 'react';
+// import RegistrationScreen from './Screens/RegistrationScreen';
+// import LoginScreen from './Screens/LoginScreen';
+// import { NavigationContainer } from "@react-navigation/native";
+import React from 'react';
 import { StyleSheet, View, Alert } from 'react-native';
-import MapScreen from './Screens/LoginScreen';
+import MapScreen from './Screens/MapScreen';
+import { navigationRef } from './Screens/MapScreen';
 
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     'Roboto': require('./assets/fonts/Roboto-Black.ttf'),
   });
-  // const [registration, setRegistration] = useState(false);
     
   return (
-    <NavigationContainer>
-      < MapScreen />
-      {/* <View style={styles.container}>
-        <StatusBar style="auto" />
-      </View > */}
 
-
-      {/* { ! registration ? <RegistrationScreen onRegistration={() => {
-        setRegistration(true)
-       Alert.alert('Press Ok')
-      }}/> 
-      : <LoginScreen onRegistration={() => {
-        setRegistration(false)
-       Alert.alert('Press Ok')
-      }}/>
-        } */}
-
-    </NavigationContainer>
+        // <View style={styles.container}
+        
+        < MapScreen />
+        // <StatusBar style="auto" />
+        
+        // </View >
   )
 }
 

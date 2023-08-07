@@ -1,23 +1,34 @@
 import 'react-native-gesture-handler';
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, createNavigationContainerRef } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../Screens/LoginScreen";
 import Register from "../Screens/RegistrationScreen";
 import Home from "../Screens/ProfileScreen";
 import CreatePostsScreen from "../Screens/CreatePostsScreen";
 import CommentsScreen from "../Screens/CommentsScreen";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import { createStackNavigator } from '@react-navigation/native-stack';
+// import { createNavigationContainerRef } from '@react-navigation/native';
 
 
-const MainStack = createNativeStackNavigator(); // вказує на групу навігаторів
+const MainStack = createStackNavigator(); // вказує на групу навігаторів
 
-export default MapScreen = () => {
+export const navigationRef = createNavigationContainerRef()
+
+// export function navigate(name, params) {
+//   if (navigationRef.isReady()) {
+//     navigationRef.navigate(name, params);
+//   }
+// }
+
+
+
+const MapScreen = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <MainStack.Navigator initialRouteName="Login">{/* Аналог Routes */}
-        <MainStack.Screen name="Register" component={Register} />{/* Аналог Route */}
         <MainStack.Screen name="Login" component={Login} />
+              <MainStack.Screen name="Register" component={Register} />{/* Аналог Route */}
               <MainStack.Screen
                   name="Home"
                   component={Home}
@@ -29,3 +40,5 @@ export default MapScreen = () => {
     </NavigationContainer>
   );
 };
+
+export default MapScreen
