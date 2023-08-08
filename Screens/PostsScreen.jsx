@@ -1,19 +1,18 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useNavigation, useRoute } from '@react-navigation/native';
-import CreatePostsScreen from './CreatePostsScreen';
-import PostsScreen from './PostsScreen';
-import ProfileScreen from './ProfileScreen';
 
-const Home = () => {
-const navigation = useNavigation();
-const { params: { email } } = useRoute();
+
+const PostsScreen = () => {
+  const navigation = useNavigation();
+  const { params: { email } } = useRoute();
 
   return (
     <View style={styles.container}>
-    <Text>Home Screen</Text>
+      <Text>PostsScreen Screen</Text>
+      <Text>Email: { email}</Text>
     </View>
-  ) 
+  );
 };
 
 const styles = StyleSheet.create({
@@ -21,7 +20,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: '#FFFFFF',
+    borderBottom: 'solid',
   },
 });
 
-export default Home;
+export default PostsScreen;

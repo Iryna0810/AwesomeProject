@@ -1,45 +1,49 @@
+import 'react-native-gesture-handler';
 import React from "react";
 import { NavigationContainer, createNavigationContainerRef } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Button } from "react-native";
 import Login from "./LoginScreen";
 import Register from "./RegistrationScreen";
-import Home from "./Home";
-import CreatePostsScreen from "./CreatePostsScreen";
-import CommentsScreen from "./CommentsScreen";
-import Profile from "./ProfileScreen";
-// import { createStackNavigator } from '@react-navigation/native-stack';
-// import { createNavigationContainerRef } from '@react-navigation/native';
+import HomeTab from "./HomeTab";
 
 
-const MainStack = createStackNavigator(); // вказує на групу навігаторів
+const MainStack = createStackNavigator()   
 
 export const navigationRef = createNavigationContainerRef()
 
-// export function navigate(name, params) {
-//   if (navigationRef.isReady()) {
-//     navigationRef.navigate(name, params);
-//   }
-// }
-
-
-
-const MapScreen = () => {
+export const MapScreen = () => {
   return (
     <NavigationContainer ref={navigationRef}>
-      <MainStack.Navigator initialRouteName="Login">{/* Аналог Routes */}
+      <MainStack.Navigator initialRouteName="Login"
+      screenOptions= { {headerShown : false,} }>
         <MainStack.Screen name="Login" component={Login} />
-        <MainStack.Screen name="Register" component={Register} />{/* Аналог Route */}
+        <MainStack.Screen name="Register" component={Register} />
         <MainStack.Screen name="Home"
-          component={Home}
-          options={{ title: "Start screen" }}
-              />
-        <MainStack.Screen name="PostsScreen" component={CreatePostsScreen} />
-        <MainStack.Screen name="Comments" component={CommentsScreen} />   
-        <MainStack.Screen name="Profile" component={Profile} />   
-
+          component={HomeTab}
+          // options={{
+          //   title: "Home screen",
+          //   headerStyle: {
+          //     backgroundColor: "#f4511e",
+          //   },
+          //   headerTintColor: "#fff",
+          //   headerTitleStyle: {
+          //     fontWeight: "bold",
+          //     fontSize: 20,
+          //   },
+          //   headerRight: () => (
+          //     <Button
+          //       onPress={() => alert("This is a button!")}
+          //       title="Press me"
+          //       color="#000"
+          //     />
+          //   ),
+          // }}
+        />
       </MainStack.Navigator>
     </NavigationContainer>
   );
 };
+
 
 export default MapScreen

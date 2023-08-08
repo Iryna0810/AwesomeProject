@@ -29,16 +29,19 @@ const RegistrationScreen = ({ onRegistration}) => {
   const [password, setPassword] = useState('');
   const [refreshing, setRefreshing] = useState(false);
 
-    const homeRoute = () => navigation.navigate("Home", {
-        screen: 'CreatePosts',
-        params: {email: email},
+     const homeRoute = () => navigation.navigate('Home', {
+        screen: 'PostScreen',
+         params: {
+         email: email,
+         login: login,
+       },
     })
 
   const handleSubmit = useCallback(() => {
     if (login&&email&&password) {
     Alert.alert(`Wellcome ${login}!`)
     console.log(`Wellcome ${login}, your email ${email}, your password ${password}`)
-    homeRoute();
+    homeRoute(email, login);
     }
     else {
       Alert.alert(`Type all necessary information for registration!`)

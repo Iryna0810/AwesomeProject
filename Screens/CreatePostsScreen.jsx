@@ -1,10 +1,18 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { useNavigation, useRoute } from '@react-navigation/native';
 
-const CreatePosts = ({ navigation }) => {
+
+const CreatePosts = () => {
+const navigation = useNavigation();
+// const { params: { email } } = useRoute();
+
+
   return (
     <View style={styles.container}>
-      <Text>CreatePosts Screen</Text>
+      <Text>Публікації</Text>
+      <Text>Email </Text>
+      <Button title="Go to Profile" onPress={() => navigation.navigate("Profile")} />
     </View>
   );
 };
