@@ -29,14 +29,10 @@ const RegistrationScreen = ({ onRegistration}) => {
   const [password, setPassword] = useState('');
   const [refreshing, setRefreshing] = useState(false);
 
-  const homeRoute = () => navigation.navigate("Home", {
-    screen: 'PostsScreen'
-  })
-
-  // const handleEnter = useCallback(() => {
-  //   console.log('Press Ok')
-  //   onRegistration(true);
-  // });
+    const homeRoute = () => navigation.navigate("Home", {
+        screen: 'CreatePosts',
+        params: {email: email},
+    })
 
   const handleSubmit = useCallback(() => {
     if (login&&email&&password) {

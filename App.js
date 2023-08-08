@@ -1,10 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-// import RegistrationScreen from './Screens/RegistrationScreen';
-// import LoginScreen from './Screens/LoginScreen';
-// import { NavigationContainer } from "@react-navigation/native";
 import React from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import { StyleSheet } from 'react-native';
 import MapScreen from './Screens/MapScreen';
 import { navigationRef } from './Screens/MapScreen';
 

@@ -17,6 +17,7 @@ import {
   Platform,
   Button,
 } from "react-native";
+import CreatePosts from './CreatePostsScreen'
 // import * as MainNavigation from '../Screens/MapScreen';
 
 import BackgroundImage from '../images/photo-bg.jpg'
@@ -32,7 +33,10 @@ const LoginScreen = () => {
         onRegistration()
     });
 
-    const homeRoute = () => navigation.navigate("Home")
+    const homeRoute = () => navigation.navigate("Home", {
+        screen: 'CreatePosts',
+        params: {email: email},
+    })
 
     const handleSubmit = useCallback(() => {
         if (email && password) {
