@@ -10,7 +10,7 @@ import CommentsScreen from "./CommentsScreen";
 import Profile from "./ProfileScreen";
 import { Ionicons } from "@expo/vector-icons";
 import PostsScreen from './PostsScreen';
-import Logout from '../images/log-out.jpg';
+import Logout from '../images/log-out.svg';
 
 
 const HomeTab = createBottomTabNavigator()
@@ -29,7 +29,7 @@ export default function Home() {
             iconName = focused
               ? 'ios-information-circle'
               : 'ios-information-circle-outline';
-          } else if (route.name === 'CreatePosts' || route.name === 'Comments') {
+          } else if (route.name === 'CreatePosts' || route.name === 'Comments' || route.name === 'Profile') {
             iconName = focused ? 'ios-list' : 'ios-list-outline';
           }
 
@@ -56,13 +56,14 @@ export default function Home() {
             },
             headerRight: () => (
               <Button
-                    onPress={() => navigation.popToTop()}
+                    onPress={() =>
+                        navigation.popToTop()}
                     title=''
                     headerBackImageSource={Logout}
                     // width= '130'
                     
-                // backgroundColor='#fff'
-                // color="#000"
+                backgroundColor='#000'
+                // color="#fff"
               />
             ),
           }}
