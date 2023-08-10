@@ -17,8 +17,8 @@ import Logout from '../images/log-out.svg';
 const HomeTab = createBottomTabNavigator()
 
 export default function Home() {
-    const navigation = useNavigation();
-    
+
+  const navigation = useNavigation();
 
   return(
     <HomeTab.Navigator initialRouteName='PostScreen'
@@ -35,7 +35,7 @@ export default function Home() {
          
           else if (route.name === 'CreatePosts')
           {
-            iconName = focused ? 'add-circle' : 'ios-add-circle-outline';
+            iconName = focused ? 'add-circle' : 'ios-add-circle';
           }
            else if( route.name === 'Profile') {
             iconName = focused ? 'ios-person' : 'ios-person-outline';
@@ -69,7 +69,7 @@ export default function Home() {
                 color="#BDBDBD"
                 marginRight = {10}              
                 onPress={() =>
-                navigation.popToTop()}
+                navigation.navigate('Login')}
               />
             ),
           }}
@@ -93,8 +93,7 @@ export default function Home() {
                 size={24}
                 color="#212121"
                 marginLeft = {10}              
-                onPress={() =>
-                navigation.navigate("Profile")}
+                onPress={() => navigation.navigate("Profile")}
               />
             ),
         }}

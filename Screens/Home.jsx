@@ -7,7 +7,7 @@ import ProfileScreen from './ProfileScreen';
 
 const Home = () => {
 const navigation = useNavigation();
-const { params: { email } } = useRoute();
+// const { params: { email } } = useRoute();
 
   return (
     <View style={styles.container}>

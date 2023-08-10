@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     color: '#000',
     marginTop: 45,
     borderStyle: 'solid',
-    boederWidth: 2,
+    borderWidth: 2,
     borderRadius: 100,
     borderColor: 'blue',
   },

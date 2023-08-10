@@ -156,8 +156,7 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         flex: 1,
-        marginTop: 263,
-    
+        marginTop: 263,  
         backgroundColor: '#fff',
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
@@ -179,7 +178,7 @@ const styles = StyleSheet.create({
         color: '#000',
         marginTop: 45,
         borderStyle: 'solid',
-        boederWidth: 2,
+        borderWidth: 2,
         borderRadius: 100,
         borderColor: 'blue',
     },
