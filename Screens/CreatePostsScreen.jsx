@@ -1,12 +1,24 @@
 // Formik x React Native example
 
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet,TextLabel, Button } from "react-native";
+import { View, TextInput, StyleSheet,Image, Button } from "react-native";
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { Formik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { EvilIcons } from '@expo/vector-icons';
-// import { nanoid } from 'nanoid';
-
+import * as Yup from 'yup';
+ 
+ const SignupSchema = Yup.object().shape({
+   image: Yup.string()
+     .min(2, 'Too Short!')
+     .max(50, 'Too Long!')
+     .required('Required'),
+   name: Yup.string()
+     .min(2, 'Too Short!')
+     .max(50, 'Too Long!')
+     .required('Required'),
+   location: Yup.string().required('Required'),
+   key: Yup.string().required('Required'),
+ });
 
 const CreatePosts = props => {
   const navigation = useNavigation();
@@ -19,40 +31,46 @@ const CreatePosts = props => {
         image: '',
         name: '',
         location: '',
+        key: '1',
       }}
-
-          onSubmit={values => {
-          setArticles((list) => [...list, values]);
+        validationSchema={SignupSchema}
+        onSubmit={(values, { resetForm }) => {
+          values.key = Math.random().toString(10);
+          setArticles((list) => [values]);
           console.log(articles);
-          
-          
+          resetForm();
     }
         }>
         
-      {({ handleChange, handleBlur, handleSubmit, values, resetForm }) => (
-        <View>
+      {({ handleChange, handleBlur, handleSubmit, values }) => (
+          <View>
+            <View style={styles.box}>
+              <Image source={require('../images/photo.png')}
+              style={styles.image}
+              />
+            </View>
           <TextInput style={styles.imageInput}
             onChangeText={handleChange('image')}
             onBlur={handleBlur('image')}
-            placeholder="Завантажте зображення"
-              value={values.image}
-              height={240}
-              clearButtonMode='while-editing'
+            placeholder="Завантажте фото"
+             value={values.image}
+             marginBottom={32}
             />
             <TextInput style={styles.textInput}
-              clearButtonMode='always'
-              onChangeText={handleChange('name')}
+            onChangeText={handleChange('name')}
             onBlur={handleBlur('name')}
             placeholder="Назва..."
             value={values.name}
             />
             <View>
-              <EvilIcons name="location" size={24} color="black" position="absolute" top={2} />
-            <TextInput style={styles.textInput}
-            onChangeText={handleChange('location')}
-            onBlur={handleBlur('location')}
-            placeholder='         Місцевість...'
-            value={values.location}
+              <View>
+                <EvilIcons name="location" size={24} color="black" position="absolute" top={2} />
+              </View>
+                <TextInput style={styles.textInput}
+                onChangeText={handleChange('location')}
+                onBlur={handleBlur('location')}
+                placeholder="       Місцевість..."
+                value={values.location}
               />
               
               </View>
@@ -76,16 +94,12 @@ const CreatePosts = props => {
 
 const styles = StyleSheet.create({
   container: {
-    // width: 343,
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 16,
     backgroundColor: "#fff"
   },
   textInput: {
-
-    // tintColor: "#BDBDBD",
     color: '#BDBDBD',
     borderBottomWidth: 1,
     marginBottom: 16,
@@ -97,19 +111,20 @@ const styles = StyleSheet.create({
   },
     box: {
     backgroundColor: '#F6F6F6',
-    width: 120,
-    height: 120,
-    position: 'absolute',
-    alignSelf: 'center',
-    top: -60,
-    borderColor: '#000',
-    borderRadius: 16,
+    width: 343,
+    height: 240,
+    position: 'relative',
+      justifyContent: "center",
+    alignItems: 'center',
+    borderRadius: 8,
   },
   imageInput: {
-    height: 240,
-    color: "#F6F6F6",
+    color: "#BDBDBD",
   },
-
+  error: {
+    color: 'red',
+    
+}
 });
 
 export default CreatePosts;

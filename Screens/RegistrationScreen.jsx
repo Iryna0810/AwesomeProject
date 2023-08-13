@@ -29,7 +29,7 @@ const RegistrationScreen = ({ onRegistration}) => {
   const [password, setPassword] = useState('');
   const [refreshing, setRefreshing] = useState(false);
 
-     const homeRoute = () => navigation.navigate('Home', {
+  const homeRoute = () => navigation.navigate('Home', {
         screen: 'PostScreen',
          params: {
          email: email,
@@ -51,7 +51,7 @@ const RegistrationScreen = ({ onRegistration}) => {
     setPassword('')
   })
 
-  const onRefresh = useCallback(() => {
+const onRefresh = useCallback(() => {
     setRefreshing(true);
     setTimeout(() => {
       setRefreshing();

@@ -20,10 +20,11 @@ export default function Home() {
 
   const navigation = useNavigation();
 
-  return(
-    <HomeTab.Navigator initialRouteName='PostScreen'
+  return (   
+    <HomeTab.Navigator
+    initialRouteName='PostScreen'
     style={styles.container}  
-      screenOptions={({ route }) => ({
+     screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
@@ -45,9 +46,10 @@ export default function Home() {
           return <Ionicons name={iconName} size={40} color={color} />;
         },
         tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
-
-      })}
+       tabBarInactiveTintColor: 'gray',
+       tabBarLabelStyle: {
+  display: 'none',
+}      })}
       >
           <HomeTab.Screen name="PostScreen" component={PostsScreen}
           options={{
@@ -74,7 +76,7 @@ export default function Home() {
             ),
           }}
           />
-      <HomeTab.Screen name="CreatePosts" component={CreatePostsScreen}
+       <HomeTab.Screen name="CreatePosts" component={CreatePostsScreen}
         options={{
           title: "Cтворити публікацію",
           headerTitleAlign: "center",
@@ -98,10 +100,14 @@ export default function Home() {
             ),
         }}
       />
-      <HomeTab.Screen name="Profile" component={Profile} />
+      <HomeTab.Screen name="Profile" component={Profile}
+      options = { {headerShown : false,} }
+      />
       {/* <HomeTab.Screen name="Comments" component={CommentsScreen} /> */}
     </HomeTab.Navigator>
-)
+
+  )
+  
 };
 
 const styles = StyleSheet.create({

@@ -6,6 +6,7 @@ import { Button } from "react-native";
 import Login from "./LoginScreen";
 import Register from "./RegistrationScreen";
 import HomeTab from "./HomeTab";
+import CreatePosts from "./CreatePostsScreen";
 
 
 const MainStack = createStackNavigator()   
@@ -40,6 +41,8 @@ export const MapScreen = () => {
           //   ),
           // }}
         />
+      <MainStack.Screen name="CreatePosts" component={CreatePosts} />
+
       </MainStack.Navigator>
     </NavigationContainer>
   );
