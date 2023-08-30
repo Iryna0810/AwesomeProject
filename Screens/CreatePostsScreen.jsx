@@ -46,15 +46,15 @@ const CreatePosts = props => {
           <View>
             <View style={styles.box}>
               <Image source={require('../images/photo.png')}
-              style={styles.image}
+              style={styles.image_camera}
               />
             </View>
           <TextInput style={styles.imageInput}
             onChangeText={handleChange('image')}
             onBlur={handleBlur('image')}
             placeholder="Завантажте фото"
-             value={values.image}
-             marginBottom={32}
+            value={values.image}
+            marginBottom={32}
             />
             <TextInput style={styles.textInput}
             onChangeText={handleChange('name')}
@@ -114,10 +114,14 @@ const styles = StyleSheet.create({
     width: 343,
     height: 240,
     position: 'relative',
-      justifyContent: "center",
+    justifyContent: "center",
     alignItems: 'center',
     borderRadius: 8,
   },
+  image_camera: {
+    width: 60,
+    height: 60,
+    },
   imageInput: {
     color: "#BDBDBD",
   },
