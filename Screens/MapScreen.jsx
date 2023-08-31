@@ -17,7 +17,7 @@ export const MapScreen = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <MainStack.Navigator initialRouteName="Login"
-      screenOptions= { {headerShown : false,} }>
+      screenOptions= { {headerShown : false} }>
         <MainStack.Screen name="Login" component={Login} />
         <MainStack.Screen name="Register" component={Register} />
         <MainStack.Screen name="Home"

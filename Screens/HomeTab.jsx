@@ -37,18 +37,18 @@ export default function Home() {
           else if (route.name === 'CreatePosts')
           {
             iconName = focused ? 'add-circle' : 'ios-add-circle';
+            // headerShown = false;
           }
            else if( route.name === 'Profile') {
             iconName = focused ? 'ios-person' : 'ios-person-outline';
           }
 
-          // You can return any component that you like here!
           return <Ionicons name={iconName} size={40} color={color} />;
         },
         tabBarActiveTintColor: 'tomato',
        tabBarInactiveTintColor: 'gray',
        tabBarLabelStyle: {
-  display: 'none',
+       display: 'none',
 }      })}
       >
           <HomeTab.Screen name="PostScreen" component={PostsScreen}
@@ -76,7 +76,7 @@ export default function Home() {
             ),
           }}
           />
-       <HomeTab.Screen name="CreatePosts" component={CreatePostsScreen}
+      <HomeTab.Screen name="CreatePosts" component={CreatePostsScreen}
         options={{
           title: "Cтворити публікацію",
           headerTitleAlign: "center",

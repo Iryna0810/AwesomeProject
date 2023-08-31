@@ -2,9 +2,8 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import React from 'react';
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import MapScreen from './Screens/MapScreen';
-// import { navigationRef } from './Screens/MapScreen';
 
 
 export default function App() {
@@ -13,6 +12,7 @@ export default function App() {
   });
     
   return (
+    
         // <View style={styles.container}>
         < MapScreen />
         // <StatusBar style="auto" />

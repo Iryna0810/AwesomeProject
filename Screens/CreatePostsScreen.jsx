@@ -5,12 +5,11 @@ import { View, TextInput, StyleSheet,Image, Button } from "react-native";
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { EvilIcons } from '@expo/vector-icons';
+import ContentBlock from '../images/Content Block.jpg'
 import * as Yup from 'yup';
  
  const SignupSchema = Yup.object().shape({
    image: Yup.string()
-     .min(2, 'Too Short!')
-     .max(50, 'Too Long!')
      .required('Required'),
    name: Yup.string()
      .min(2, 'Too Short!')
@@ -23,6 +22,8 @@ import * as Yup from 'yup';
 const CreatePosts = props => {
   const navigation = useNavigation();
   const [articles, setArticles] = useState([]);
+  // const [image, setImage] = useState('');
+  // const 
 
 
   return (
@@ -64,7 +65,7 @@ const CreatePosts = props => {
             />
             <View>
               <View>
-                <EvilIcons name="location" size={24} color="black" position="absolute" top={2} />
+                <EvilIcons name="location" size={24} color="black" position="absolute" top={1} />
               </View>
                 <TextInput style={styles.textInput}
                 onChangeText={handleChange('location')}
@@ -78,13 +79,24 @@ const CreatePosts = props => {
               { marginTop: 32 },
               { borderRadius: 100 },
               { overflow: 'hidden' },
+              { marginBottom: 120 },
             ]}
             >
               <Button style={styles.button}
-                color='#FF6C00'
+                color='#FF6C00' 
                 onPress={handleSubmit}
                 title="Опублікувати" />
-              </View>
+            </View>
+            <View style={[
+              { borderRadius: 100 },
+              { overflow: 'hidden' },
+              { marginBottom: 34 },
+              { justifyContent: 'center' },
+              { alignItems: 'center' },
+            ]}>
+            <Image source={require('../images/trash.jpg')}
+              style={styles.image_trash} />
+            </View>
         </View>
       )}
     </Formik>
@@ -121,7 +133,11 @@ const styles = StyleSheet.create({
   image_camera: {
     width: 60,
     height: 60,
-    },
+  },
+  image_trash: {
+    width: 70,
+    height: 40,
+  },
   imageInput: {
     color: "#BDBDBD",
   },

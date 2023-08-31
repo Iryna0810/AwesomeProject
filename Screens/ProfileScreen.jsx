@@ -33,20 +33,19 @@ const Profile = ({ navigation }) => {
     }, 2000);
   }, []);
 
-  return (
+   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        {/* <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}
-          style={styles.container}> */}
-          <ScrollView
+        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}
+          style={styles.container}>
+          
+           <ScrollView
             keyboardDismissMode="interactive"
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }>
-          <ImageBackground
-            
-              // source={BackgroundImage}
-            style={styles.image_bg}
-          >
+            <ImageBackground
+              source={BackgroundImage}
+              style={styles.image_bg}>
               <SafeAreaView style={styles.inputContainer}>
                 <View style={styles.box}>
                   <Image
@@ -54,10 +53,11 @@ const Profile = ({ navigation }) => {
                     style={styles.image}
                   />
                 </View>
-                </SafeAreaView>
+                {/* <Text style={styles.title}>Реєстрація</Text> */}
+              </SafeAreaView>
             </ImageBackground>
           </ScrollView>
-        {/* </KeyboardAvoidingView> */}
+        </KeyboardAvoidingView>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -72,6 +72,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     backgroundColor: '#fff',
   },
+    inputContainer: {
+        flex: 1,
+        marginTop: 263,  
+        backgroundColor: '#fff',
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        paddingHorizontal: 16,
+    },
   title: {
     marginTop: 92,
     color: "#212121",
@@ -82,7 +90,7 @@ const styles = StyleSheet.create({
   },
   image_bg: {
     flex: 1,
-    alignItems:'center',
+    // background-position: 'top',
   },
   image: {
     position: 'absolute',
@@ -91,13 +99,35 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
   },
+  inputContainer: {
+    flex: 1,
+    marginTop: 263,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    paddingHorizontal: 16,
+  },
   text: {
     marginTop: 16,
     marginBottom: 45,
     textAlign: 'center',
     
   },
-    box: {
+  textInput: {
+    position: 'absolute',
+    alignSelf: 'flex-end',
+    right: 16,
+    top: '8%',
+  },
+  btn: {
+    color: '#000',
+    marginTop: 45,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderRadius: 100,
+    borderColor: 'blue',
+  },
+  box: {
     backgroundColor: '#F6F6F6',
     width: 120,
     height: 120,
@@ -107,9 +137,7 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     borderRadius: 16,
   }
-    }
+}
 );
-
-
 
 export default Profile;
